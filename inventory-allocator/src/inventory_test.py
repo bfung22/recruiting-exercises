@@ -47,35 +47,35 @@ class InventoryTest(unittest.TestCase):
     	print("PASSED!")
 
     def test_lacking_inventory2a(self):
-		print("\nTest: not enough inventory -> no allocation (case 2a: multiple warehouses, lack of quantity in oranges)")
-		order = { 'apple': 50, 'orange': 50}
-		warehouse_1 = {'name':'owd', 'inventory': { 'apple': 20 , 'orange': 10}}
-		warehouse_2 = {'name':'dm', 'inventory': { 'apple': 30 , 'orange': 10}}
-		shipment = [warehouse_1, warehouse_2]
-		expected = []
-		self.assertEqual(inv.allocate(order, shipment), expected)
-		print("PASSED!")
+	print("\nTest: not enough inventory -> no allocation (case 2a: multiple warehouses, lack of quantity in oranges)")
+	order = { 'apple': 50, 'orange': 50}
+	warehouse_1 = {'name':'owd', 'inventory': { 'apple': 20 , 'orange': 10}}
+	warehouse_2 = {'name':'dm', 'inventory': { 'apple': 30 , 'orange': 10}}
+	shipment = [warehouse_1, warehouse_2]
+	expected = []
+	self.assertEqual(inv.allocate(order, shipment), expected)
+	print("PASSED!")
 
     def test_lacking_inventory2b(self):
-		print("\nTest: not enough inventory -> no allocation (case 2b: lack of quantity all around)")
-		order = { 'apple': 50, 'orange': 50}
-		warehouse_1 = {'name':'owd', 'inventory': { 'apple': 20 , 'orange': 10}}
-		warehouse_2 = {'name':'dm', 'inventory': { 'apple': 20 , 'orange': 10}}
-		warehouse_3 = {'name':'pn', 'inventory': { 'apple': 5 , 'orange': 20}}
-		shipment = [warehouse_1, warehouse_2, warehouse_3]
-		expected = []
-		self.assertEqual(inv.allocate(order, shipment), expected)
-		print("PASSED!")
+	print("\nTest: not enough inventory -> no allocation (case 2b: lack of quantity all around)")
+	order = { 'apple': 50, 'orange': 50}
+	warehouse_1 = {'name':'owd', 'inventory': { 'apple': 20 , 'orange': 10}}
+	warehouse_2 = {'name':'dm', 'inventory': { 'apple': 20 , 'orange': 10}}
+	warehouse_3 = {'name':'pn', 'inventory': { 'apple': 5 , 'orange': 20}}
+	shipment = [warehouse_1, warehouse_2, warehouse_3]
+	expected = []
+	self.assertEqual(inv.allocate(order, shipment), expected)
+	print("PASSED!")
 
     def test_lacking_inventory3(self):
-		print("\nTest: not enough inventory -> no allocation (case 3: does not contain all items in order)")
-		order = { 'apple': 10, 'orange': 21, 'banana': 2}
-		warehouse_1 = {'name':'owd', 'inventory': { 'apple': 20 , 'orange': 10}}
-		warehouse_2 = {'name':'dm', 'inventory': { 'apple': 30 , 'orange': 10}}
-		shipment = [warehouse_1, warehouse_2]
-		expected = []
-		self.assertEqual(inv.allocate(order, shipment), expected)
-		print("PASSED!")
+	print("\nTest: not enough inventory -> no allocation (case 3: does not contain all items in order)")
+	order = { 'apple': 10, 'orange': 21, 'banana': 2}
+	warehouse_1 = {'name':'owd', 'inventory': { 'apple': 20 , 'orange': 10}}
+	warehouse_2 = {'name':'dm', 'inventory': { 'apple': 30 , 'orange': 10}}
+	shipment = [warehouse_1, warehouse_2]
+	expected = []
+	self.assertEqual(inv.allocate(order, shipment), expected)
+	print("PASSED!")
 
     def test_split(self):
     	print("\nTest: split warehouse inventory (case: single item)")
@@ -98,15 +98,15 @@ class InventoryTest(unittest.TestCase):
     	print("PASSED!")
 
     def test_split3(self):
-		print("\nTest: split warehouse inventory (case: even)")
-		order = { 'apple': 10, 'orange': 10}
-		warehouse_1 = {'name':'owd', 'inventory': { 'apple': 2 , 'orange': 1}}
-		warehouse_2 = {'name':'dm', 'inventory': { 'apple': 2 , 'orange': 8}}
-		warehouse_3 = {'name':'pn', 'inventory': { 'apple': 6 , 'orange': 1}}
-		shipment = [warehouse_1, warehouse_2, warehouse_3]
-		expected = [{'owd': {'apple': 2, 'orange': 1}}, {'dm': {'apple':2, 'orange': 8}}, {'pn': {'apple':6, 'orange': 1}}]
-		self.assertEqual(inv.allocate(order, shipment), expected)
-		print("PASSED!")
+	print("\nTest: split warehouse inventory (case: even)")
+	order = { 'apple': 10, 'orange': 10}
+	warehouse_1 = {'name':'owd', 'inventory': { 'apple': 2 , 'orange': 1}}
+	warehouse_2 = {'name':'dm', 'inventory': { 'apple': 2 , 'orange': 8}}
+	warehouse_3 = {'name':'pn', 'inventory': { 'apple': 6 , 'orange': 1}}
+	shipment = [warehouse_1, warehouse_2, warehouse_3]
+	expected = [{'owd': {'apple': 2, 'orange': 1}}, {'dm': {'apple':2, 'orange': 8}}, {'pn': {'apple':6, 'orange': 1}}]
+	self.assertEqual(inv.allocate(order, shipment), expected)
+	print("PASSED!")
 
     def test_split4(self):
     	print("\nTest: split warehouse inventory (case: uneven split)")
@@ -149,35 +149,35 @@ class InventoryTest(unittest.TestCase):
     	print("PASSED!")
 
     def test_matching_all2(self):
-		print("\nTest: exact match case 2 (multiple orders)")
-		order = { 'apple': 50, 'orange': 50}
-		warehouse_1 = {'name':'owd', 'inventory': { 'apple': 50 , 'orange': 50}}
-		shipment = [warehouse_1]
-		expected = [{'owd': {'apple': 50, 'orange': 50}}]
-		self.assertEqual(inv.allocate(order, shipment), expected)
-		print("PASSED!")
+	print("\nTest: exact match case 2 (multiple orders)")
+	order = { 'apple': 50, 'orange': 50}
+	warehouse_1 = {'name':'owd', 'inventory': { 'apple': 50 , 'orange': 50}}
+	shipment = [warehouse_1]
+	expected = [{'owd': {'apple': 50, 'orange': 50}}]
+	self.assertEqual(inv.allocate(order, shipment), expected)
+	print("PASSED!")
 
     def test_matching_all3(self):
-		print("\nTest: exact match case 2 (priority)")
-		order = { 'apple': 50, 'orange': 50}
-		warehouse_1 = {'name':'owd', 'inventory': { 'apple': 50 , 'orange': 50}}
-		warehouse_2 = {'name':'dm', 'inventory': { 'apple': 50 , 'orange': 50}}
-		shipment = [warehouse_1, warehouse_2]
-		expected = [{'owd': {'apple': 50, 'orange': 50}}]
-		self.assertEqual(inv.allocate(order, shipment), expected)
-		print("PASSED!")
+	print("\nTest: exact match case 2 (priority)")
+	order = { 'apple': 50, 'orange': 50}
+	warehouse_1 = {'name':'owd', 'inventory': { 'apple': 50 , 'orange': 50}}
+	warehouse_2 = {'name':'dm', 'inventory': { 'apple': 50 , 'orange': 50}}
+	shipment = [warehouse_1, warehouse_2]
+	expected = [{'owd': {'apple': 50, 'orange': 50}}]
+	self.assertEqual(inv.allocate(order, shipment), expected)
+	print("PASSED!")
 
 
     def test_matching_all4(self):
-		print("\nTest: exact match case 3 (priority)")
-		order = { 'apple': 50, 'orange': 50}
-		warehouse_1 = {'name':'owd', 'inventory': { 'apple': 50 , 'orange': 50}}
-		warehouse_2 = {'name':'dm', 'inventory': { 'apple': 50 , 'orange': 50}}
-		warehouse_3 = {'name':'pn', 'inventory': { 'apple': 0 , 'orange': 50}}
-		shipment = [warehouse_1, warehouse_2, warehouse_3]
-		expected = [{'owd': {'apple': 50, 'orange': 50}}]
-		self.assertEqual(inv.allocate(order, shipment), expected)
-		print("PASSED!")
+	print("\nTest: exact match case 3 (priority)")
+	order = { 'apple': 50, 'orange': 50}
+	warehouse_1 = {'name':'owd', 'inventory': { 'apple': 50 , 'orange': 50}}
+	warehouse_2 = {'name':'dm', 'inventory': { 'apple': 50 , 'orange': 50}}
+	warehouse_3 = {'name':'pn', 'inventory': { 'apple': 0 , 'orange': 50}}
+	shipment = [warehouse_1, warehouse_2, warehouse_3]
+	expected = [{'owd': {'apple': 50, 'orange': 50}}]
+	self.assertEqual(inv.allocate(order, shipment), expected)
+	print("PASSED!")
 
 if __name__ == '__main__':
 	inv = Inventory()
