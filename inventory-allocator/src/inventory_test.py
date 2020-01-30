@@ -120,7 +120,7 @@ class InventoryTest(unittest.TestCase):
 
 		
     def test_no_match(self):
-    	print("\nTest: no match")
+    	print("\nTest: no matches")
     	order = { 'apple': 2, 'orange': 2}
     	warehouse_1 = {'name':'owd', 'inventory': { 'mango': 2 , 'pineapple': 2}}
     	warehouse_2 = {'name':'dm', 'inventory': { 'salt': 3 , 'pepper': 12}}
